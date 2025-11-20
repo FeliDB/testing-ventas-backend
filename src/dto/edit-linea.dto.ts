@@ -1,0 +1,9 @@
+import { IsNotEmpty, IsString, MaxLength } from "class-validator";
+
+export class EditLineaDto {
+    idLinea: number
+
+    @IsNotEmpty({message: "El nombre no puede estar vacio"})
+    @MaxLength(15, {message: "El nombre no puede tener mas de 15 caracteres"})   
+    descripcion: string;
+}

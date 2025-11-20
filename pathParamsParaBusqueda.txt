@@ -1,0 +1,21 @@
+PARA BUSCAR EL PRODUCTO:
+http://localhost:3000/search/producto-linea-marca?q=input (REEMPLAZAR INPUT POR COINCIDENCIA EXISTENTE EN LA BD)
+
+
+PARA BUSCAR LA FACTURA POR FECHA
+http://localhost:3000/search/factura-por-fecha?fecha=AÑO-MES-DIA (REEMPLAZAR AÑO, MES, DIA POR NUMEROS)
+
+
+BODY REQUEST PARA VENTA:
+{
+    "impuesto": 30,
+    "idDetalle": [{
+        "productoId": 2
+    }],
+    "idFactura": {
+        "total": 30,
+        "idTipoFactura": 1,
+        "idMetodoPago": 1
+    },
+    "idCliente": 1
+}
