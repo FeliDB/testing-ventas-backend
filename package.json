@@ -18,9 +18,10 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "test:stress": "jest --testPathPattern=stress-tests --runInBand --verbose",
-    "test:stress:productos": "jest --testPathPattern=productos-stress.spec.ts --runInBand --verbose",
-    "test:stress:ventas": "jest --testPathPattern=ventas-stress.spec.ts --runInBand --verbose",
+    "test:stress": "jest --testPathPatterns=stress-test-standalone.spec.ts --runInBand --verbose",
+    "test:stress:productos": "jest --testPathPatterns=productos-stress-simple.spec.ts --runInBand --verbose",
+    "test:stress:ventas": "jest --testPathPatterns=ventas-stress-simple.spec.ts --runInBand --verbose",
+    "test:stress:standalone": "jest --testPathPatterns=stress-test-standalone.spec.ts --runInBand --verbose",
     "seed": "ts-node -r tsconfig-paths/register src/scripts/seed-data.ts"
   },
   "dependencies": {
@@ -70,15 +71,18 @@
       "json",
       "ts"
     ],
-    "rootDir": "src",
+    "rootDir": ".",
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },
     "collectCoverageFrom": [
-      "**/*.(t|j)s"
+      "src/**/*.(t|j)s"
     ],
-    "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "coverageDirectory": "coverage",
+    "testEnvironment": "node",
+    "moduleNameMapping": {
+      "^src/(.*)$": "<rootDir>/src/$1"
+    }
   }
 }
